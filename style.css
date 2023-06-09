@@ -1,0 +1,183 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  font-size: 62.5%;
+  --font-primary: 'Epilogue', sans-serif;
+  /*Auto aguste de texto com CSS (clamp) dentro de uma janela*/
+  --fonte-card-h2: clamp(3rem, 0.5rem + 3vw, 4rem);
+}
+
+body{
+  font-size: 1.6rem;
+  font-family: var(--font-primary);
+
+  background: #28293E;
+}
+
+.page{
+  max-width: clamp(33rem, 30rem + 60rem + 60vw, 117rem);
+  padding: 0 5rem;
+  margin: 0 auto;
+}
+
+header{
+  animation: topdown 700ms 350ms backwards;
+
+  /*Opções de animação*/
+  /*animation-fill-mode: forwards; /*Para no 100%*/
+  /*animation-direction: reverse; /*Do 0% ao 100%*/
+}
+
+header p{
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 3.2rem;
+
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  color: #BBB3E6;
+
+  margin: 10.0rem 0 1.7rem 0;
+  text-align: center;
+}
+
+header h1{
+  font-weight: 800;
+  font-size: 4.0rem;
+  line-height: 4.8rem;
+  text-align: center;
+
+  color: #FFFFFF;
+
+  margin-bottom: 8.0rem;
+}
+
+main{
+  display: grid;
+  gap: 3.2rem;
+
+  animation: downtop 700ms 350ms backwards;
+}
+
+.card{
+  position: relative;
+}
+
+main .card h2{
+  font-weight: 800;
+  font-size: var(--fonte-card-h2);
+  line-height: 4.8rem;
+
+  color: #FFFFFF;
+
+  /*Sobreposção de elementos*/
+  position: absolute;
+
+  bottom: 5.2rem;
+  left: 2.8rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2.3rem;
+}
+
+main .card span{
+  display: inline-flex;
+  align-items: center;
+
+  height: 3.8rem;
+  /*Se mantenha no tamanho do conteúdo*/
+  width: fit-content;
+
+  padding: 5px 1.6rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 3.2rem;
+
+  color: #090039;
+
+  border-radius: 2.0rem;
+  background: #FFFFFF;
+}
+
+img{
+  /*Determina um tamanho fixo as img*/
+  width: 100%;
+  height: 41.6rem;
+  /**/
+
+  object-fit: cover;
+  border-radius: 6px;
+
+  /*Animaçao de Scale - Entrada e saída da animação*/
+  transition: all 200ms;
+
+  /*Adicionando filtros de IMG*/
+  filter: brightness(0.5);
+}
+
+img:hover{
+  /*Animaçao de Scale - Entrada e saída da animação*/
+  transform: scale(1.1);
+
+  opacity: 0.4;
+}
+
+/*at-rule  
+@keyframes ou @media*/
+@keyframes topdown{
+  0%{
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }  
+}
+
+@keyframes downtop{
+  0%{
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*Versão desktop*/
+@media (min-width: 700px) {
+  .page {
+    max-width: 100%;
+    padding: 0 5rem;
+  }
+
+  main {
+    grid-template-areas: "A B B"
+    "C C D";
+  }
+
+  main div:nth-child(1) {
+    grid-area: A;
+  }
+
+  main div:nth-child(2) {
+    grid-area: B;
+  }
+
+  main div:nth-child(3) {
+    grid-area: C;
+  }
+
+  main div:nth-child(4) {
+    grid-area: D;
+  }
+}
